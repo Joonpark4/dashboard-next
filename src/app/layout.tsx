@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR } from "next/font/google";
-
 import "./globals.css";
+import { Nav } from "./_assets/layouts/nav";
+import { PageHeader } from "./_assets/layouts/page-header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,12 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`centered h-dvh flex-col sm:gap-1 sm:p-4 ${noto.className} sm:flex-row`}
-      >
-        <div className="flex w-full max-w-[1440px]">
-          <div className="min-w-[150px] border">ㅎㅇ</div>
-          {children}
+      <body className={`centered h-dvh ${noto.className}`}>
+        <div className="flex m-4 w-full h-[95vh] max-w-[1440px] rounded-lg border shadow-xl">
+          <Nav />
+          <main className="flex w-full h-full flex-col justify-start">
+            <PageHeader />
+            <div className="p-4">{children}</div>
+          </main>
         </div>
       </body>
     </html>
